@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aframe ex01, by Leung Ting Hei</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assest>
+            <img id="brick" src="img/bricks01.jpg">
+        </a-assest>
+        <a-entity geometry = "primative:box" material = "color:red" position = "1 1 -3"></a-entity>
+        <a-entity geometry = "primative:box" rotation = "-45 0 0" material = "color:green" position = "0.8 1 -10" scale = "10 10 2"></a-entity>
+        <a-text value = "Shico" position = "-0.5 2 -2" color = "#6c3baa"></a-text>
+        <a-box id="cubrick" position="0.3 3.0 -3.8" depth="0.5" height="0.5" width="1.9"></a-box>
+        <a-box position = "-0.5 1.5 -1.5" material = "src:#brick; roughness:100;" depth = "0.5" height = "0.5" width = "0.5"></a-box>
+        <a-sky color = "#e5f3fd"></a-sky>
+    </a-scene>
+    <script>
+        setTimeout((e)=>{
+            const texture = new window. THREE. TextureLoader().load('img/bricks01.jpg');
+            const material_tex = new THREE.MeshBasicMaterial({map:texture});
+            const box = document.querySelector("#cubrick")
+            let mesh = box.getObject3D('mesh')
+            mesh.material = material_tex;
+        },5000);
+    </script>
+</body>
+</html>
